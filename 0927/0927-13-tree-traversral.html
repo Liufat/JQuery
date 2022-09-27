@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tree traversal</title>
+</head>
+
+<body>
+    <ul class="level-1">
+        <li class="item-1">item-1</li>
+        <li class="item-2">item-2
+            <ul class="level-2">
+                <li class="item-01">itme-01</li>
+                <li class="item-02">itme-02
+                    <ul class="level-3">
+                        <li class="item-001">item-001</li>
+                        <li class="item-002">item-002</li>
+                        <li class="item-003">item-003</li>
+                    </ul>
+                </li>
+                <li class="item-03">itme-03</li>
+            </ul>
+        </li>
+        <li class="item-3">item-3</li>
+    </ul>
+     <script src="./../JS/jquery-3.6.1.min.js"></script>
+     <script>
+        // $('.level-1').children().css('color','green');
+        //class=level-1 裡的 第一層子元素(li item-1、item-2、item-3)
+
+        // $('.level-1').children().children().css('color','green');
+        //class=level-1 裡的 第一層子元素(li item-1、item-2、item-3) 裡的第一層子元素(li item-01、item-02、item-03)
+
+        // $('.level-1').find('li').css('color','green');
+        //class=level-1 裡的 所有tag=li 的子元素
+
+        // $('.level-1').find('.item-002').css('color','green');
+        //class=level-1 裡的 class=item-002 的子元素
+        
+        // $('.item-002').parent().css('color','green');
+        //class=item-002 外的 上一層父元素
+        
+        // $('.item-002').parent().parent().css('color','green');
+        //class=item-002 外的 上一層父元素 外的 上一層父元素
+        
+        // $('.item-002').closest('.level-2').css('color','green');
+        //class=item-002 外的 最接近的 class=level-2 的 直系元素
+
+        // $('.item-002').parents().css('color','green');
+        //class=item-002 外的 所有元素(一路到html)
+
+        // $('.item-002').parentsUntil('.level-1').css('color','green');
+        //class=item-002 外的 所有元素(直到class=level-1)
+
+        // $('.item-002').closest('li').css('color','green');
+        //class=item-002 外的 最接近的 tag=li 的 直系元素=>自己
+
+        // $('.item-002').parent().parent().next().css('color','green');
+        //class=item-002 外的 上一層父元素(ul class=level-2) 外的 上一層父元素(li class=item-02) 的後一個元素 (li class=item-03)
+
+        // $('.item-002').parent().parent().prev().css('color','green');
+        //class=item-002 外的 上一層父元素(ul class=level-2) 外的 上一層父元素(li class=item-02) 的前一個元素 (li class=item-01)
+        
+        $('.item-002').parent().parent().prev().nextAll().css('color','green');
+        //class=item-002 外的 上一層父元素(ul class=level-2) 外的 上一層父元素(li class=item-02) 的前一個元素 (li class=item-01) 的後面所有元素(li class=item-02、item=03)
+
+     </script>
+</body>
+
+</html>
