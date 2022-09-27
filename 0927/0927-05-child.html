@@ -36,13 +36,24 @@
         <div class="box">box11</div>
         <div class="box">box12</div>
     </div>
+    <div class="wrap">
+        <span>ya</span>
+        <span>ya</span>
+        <span>ya</span>
+        <span>ya</span>
+        <span>ya</span>
+        <span>ya</span>
+        <span>ya</span>
+        <div class="box">boxonly</div>
+    </div>
 
      <script src="./../JS/jquery-3.6.1.min.js"></script>
      <script>
         // $('.box:first-child').css('background','green');
         // $('.box:last-child').css('background','green');
-        $('.box:first-of-type').css('background','green');
-        $('box:nth-child(1)').css('background','green')
+        // $('.box:first-of-type').css('background','green');
+        // $('.box:nth-child(1)').css('background','green')
+        $('.box:only-of-type').css('background','green')
      </script>
 </body>
 </html>
