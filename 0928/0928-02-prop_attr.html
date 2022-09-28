@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prop vs attr</title>
+</head>
+<body>
+    <button>click</button>
+    <input type="checkbox">
+
+     <script src="./../JS/jquery-3.6.1.min.js"></script>
+     <script>
+        $('button').click(function(){
+            const check = $('input').prop('checked')
+            if(check){
+                console.log('有勾')
+            } else {
+                console.log('沒溝')
+            }
+            // console.log('attr:',$('input').attr('checked')); 
+            // console.log('prop:',$('input').prop('checked'));
+        })
+
+        //沒打勾：attr: undefined     prop: false
+        //打勾：attr: undefined     prop: true
+        
+     </script>
+</body>
+</html>
