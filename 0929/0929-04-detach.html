@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detach</title>
+</head>
+
+<body>
+    <button class="btn btn-info">detach</button>
+    <div class="container">
+        <div class="row flex-column">
+            <div class="hello">Hello World</div>
+            <div class="hello hello1">Hello World1</div>
+            <div class="hello2">Hello World2</div>
+        </div>
+    </div>
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        let isDetached = false;
+        let myContent = null;
+        let index = 0;
+        //detach = 剪下
+        $(".btn").click(function () {
+            if (isDetached) {//判斷是否已有剪下內容>已經有了
+                isDetached = false;//把isDetached改成false以備下次使用
+                $('.row').append(myContent);//使用append貼上mtContent的內容
+            }
+            else {
+                isDetached = true;//把isDetached改成true以準備貼上
+                myContent = $(".row div").detach();//使用detach剪下內容，並指定給myContent這個變數備用
+            }
+        });
+
+    </script>
+</body>
+
+</html>

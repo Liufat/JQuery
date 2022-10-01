@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <style>
+            /* tr{
+                background-color: lightblue;
+            } */
+        </style>
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">check</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    <input type="checkbox" name="" id="">
+                </th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <input type="checkbox" name="" id="">
+                </th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <input type="checkbox" name="" id="">
+                </th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <input type="checkbox" name="" id="">
+                </th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <input type="checkbox" name="" id="">
+                </th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        //[todo]點擊checkbox後，整行上色
+        //1.能否抓到哪些checkbox被勾選了？
+        // $('input:checkbox').click(function(){
+        //     console.log($(this).parent().nextAll().text());
+        // })
+        //2.能否把選到的背景變成light blue
+        $('input:checkbox').click(function(){
+            const check = $(this).prop('checked');
+            if(check){
+                $(this).parent().parent().children().css('background-color','lightblue')
+            } else {
+                $(this).parent().parent().children().css('background-color','')
+            }
+        })
+    </script>
+</body>
+
+</html>

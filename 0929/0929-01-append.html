@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>append</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- <button id="more">click</button>
+            <button id="less">click2</button> -->
+            <ul>
+                <li>item1</li>
+                <li>item2</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        // $('ul').prepend('<li>item-1</li>');//塞在目標的子元素最前面
+        // $('ul').append('<li>item3</li>');//塞在目標的子元素的最後面
+        // let i = 4;
+        // $('#more').click(function () {
+        //     $('ul').append('<li>item'+i+'</li>');
+        //     i++;
+        // })
+
+        // $('#less').click(function(){
+        //     $('ul li').last().remove();
+        //     i--;
+        // })
+            $('ul').before('<li>item before</li>');//塞在目標的最前面
+            $('ul').after('<li>item after</li>');//塞在目標的最後面
+
+    </script>
+</body>
+
+</html>

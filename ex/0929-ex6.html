@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex6</title>
+    <style>
+        .wrap {
+            width: 800px;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .train {
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            width: 500%;
+            transform: translateX(0px);
+            /*移動圖片 -800px -1600px......*/
+            transition: .5s;
+        }
+
+        .train li img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            padding-left: 0;
+            justify-content: center;
+            left: 0;
+            right: 0;
+        }
+
+        .slider-dots li {
+            width: 100px;
+            height: 10px;
+            border: 1px white solid;
+            list-style: none;
+            margin: 0 10px;
+        }
+
+        .slider-dots li:nth-child(1) {
+            background-color: white;
+        }
+
+        .prePage {
+            position: absolute;
+            height: 30px;
+            width: 80px;
+            top: 50%;
+            bottom: 50%;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.479);;
+            
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .nextPage {
+            position: absolute;
+            height: 30px;
+            width: 80px;
+            top: 50%;
+            bottom: 50%;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.479);
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="train">
+            <li><img src="./../images/slide1.jpg" alt=""></li>
+            <li><img src="./../images/slide2.jpg" alt=""></li>
+            <li><img src="./../images/slide3.jpg" alt=""></li>
+            <li><img src="./../images/slide4.jpg" alt=""></li>
+            <li><img src="./../images/slide5.jpg" alt=""></li>
+        </ul>
+        <ul class="slider-dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="prePage">上一頁</div>
+        <div class="nextPage">下一頁</div>
+    </div>
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        //todo:游標指到slider-dots時，train移動-800px，slider-dots[1]取消bgc，slider-dots[2]加上bgc
+
+        //1.分辨游標指到哪個slider-dots
+        let totalPage = 5;
+        let page = 0
+        $('.slider-dots li').mouseenter(function () {
+            // console.log($(e.currentTarget).index());
+
+            // console.log(i)
+            page = $(this).index();
+            i = page * -800;
+            $('.train').css('transform', 'translateX(' + i + 'px)');
+            $(this).css('background-color', 'white').siblings().css('background-color', 'transparent');
+        })
+        $('.nextPage').click(function () {
+            if (page !== 4) {
+                $('.train').css('transform', 'translateX(' + `${(page + 1) * -800}` + 'px)');
+                page++;
+                $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
+            } else {
+                page = 0;
+                $('.train').css('transform', 'translateX(' + `${(page) * -800}` + 'px)');
+                $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
+            }
+        })
+        $('.prePage').click(function () {
+            if (page !== 0) {
+                $('.train').css('transform', 'translateX(' + `${(page - 1) * -800}` + 'px)');
+                page--;
+                $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
+            } else {
+                page = 4;
+                $('.train').css('transform', 'translateX(' + `${(page) * -800}` + 'px)');
+                $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
+            }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

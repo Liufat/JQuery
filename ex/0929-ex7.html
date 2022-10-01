@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex7</title>
+</head>
+
+<body>
+    <form action="">
+        <select name="city" id="city">
+            <option value="0">基隆</option>
+            <option value="1">台北</option>
+            <option value="2">新北</option>
+        </select>
+        <select name="district" id="district">
+            <option value="0">七堵區</option>
+            <option value="1">中正區</option>
+            <option value="2">暖暖區</option>
+        </select>
+    </form>
+
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        let districtArray = [
+            ['七堵', '中正', '暖暖','生日'],
+            ['中正', '大安', '信義'],
+            ['蘆洲', '三重', '新店'],
+        ];
+        //[todo:]使用者修改城市的下拉選單，就把區域的選單改成對應的選單
+        //1.如何先抓到第一個表單的值？
+        //2.該城市的區域名陣列要如何取出？
+        //3.如何修改下拉式選單的值
+        $('#city').change(function () {
+            // console.log($('#city').val());
+            let city = $('#city').val();
+            // console.log($('#district option').eq(0).text())
+            const districtArr = districtArray[city];
+            // console.log(districtArr);
+            // $('#district option').each(function (i) {
+            //     $('#district option').eq(i).text(districtArr[i]);
+            // })
+                // console.log(districtArray[city][1])
+            $('#district').empty();
+            $(districtArr).each(function(i){
+                $('#district').append(`<option value="${i}">${districtArray[city][i]}</option>`);
+            })
+        })
+    </script>
+</body>
+
+</html>

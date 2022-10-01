@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>off</title>
+</head>
+
+<body>
+    <button id="sayHi">sayHi</button>
+    <button id="on">on</button>
+    <button id="off">off</button>
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        funx = function () {//必須要給function綁定變數，不然就算兩個function長得一模一樣，也不會被認定為是同一個function
+            console.log('Hi')};
+
+
+            $('#on').one('click',function () { 
+                $('#sayHi').on('click', funx);
+            })
+
+            $('#off').click(function () {
+                $('#sayHi').off('click', funx);
+            });
+    </script>
+</body>
+
+</html>

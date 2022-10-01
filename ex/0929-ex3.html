@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex3</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="text" class="form-control" id="username" 
+                        placeholder="Enter user name" value="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        placeholder="Enter email" value="">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="checkbox">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button class="btn btn-primary" id="autoInput" preventDefault>Auto input</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        //[todo]按auto input後，將設定好的內容，填入input的value中
+        //1.設置預填入的內容
+        const a_i_user_name = '生日哥許恆恆';
+        const a_i_email = 'birthday@gmail.com';
+        const a_i_password = 'birthday';
+        //2.抓到點下auto input的事件
+        // $('#autoInput').on('click',function(e){
+        //     e.preventDefault();
+        //     console.log('auto input');
+        // })
+        //3.點下auto input後，能否抓到指定區的value值？
+        // $('#autoInput').on('click',function(e){
+        //     e.preventDefault();
+        //     console.log($('#username').val());
+        //     console.log($('#email').val());
+        //     console.log($('#password').val());
+        //     console.log($('#checkbox').prop('checked'));
+        // })
+        //4.點下按鈕後，將設定的value填入指定區的value
+        $('#autoInput').on('click',function(e){
+            e.preventDefault();
+           $('#username').attr('value', a_i_user_name);
+           $('#email').attr('value', a_i_email);
+           $('#password').attr('value', a_i_password);
+           $('#checkbox').attr('checked','checked');
+        });
+    </script>
+</body>
+
+</html>
