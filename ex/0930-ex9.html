@@ -20,10 +20,13 @@
         }
 
         .box {
+            left: 0;
+            top: 0;
             width: 100px;
             height: 100px;
             background-color: tomato;
             position: absolute;
+            transition: .5s;
         }
     </style>
 </head>
@@ -60,32 +63,47 @@
 
     <script src="./../JS/jquery-3.6.1.min.js"></script>
     <script>
+        let boxLeft = parseInt($('.box').css('left'));
+        let boxTop = parseInt($('.box').css('top'));
         function moveRight() {
             // console.log($('.box').css('left'));//確認往右的最大值，避免爆版
             const maxLeft = $('.wrap').width() - $('.box').width();
-            console.log(maxLeft);
-            if (parseInt($('.box').css('left')) < maxLeft) {
-                $('.box').css('left', '+=100');
+            //避免按太快而導致位置參數出錯
+            // console.log(maxLeft);
+            if (boxLeft < maxLeft) {
+                boxLeft += 100;
+                $('.box').css('left', boxLeft);
             }
             //parseInt=>從頭開始，從字串取出數值，遇到無法轉成數值的字串後結束
         }
         function moveLeft(){
-            if (parseInt($('.box').css('left')) > 0) {
-                $('.box').css('left', '-=100');
+            if (boxLeft > 0) {
+                boxLeft -= 100;
+                $('.box').css('left', boxLeft);
+            }
+        }
+        function moveDown(){
+            const maxTop =  $('.wrap').height() - $('.box').height();
+            if (boxTop < maxTop) {
+                boxTop += 100;
+                $('.box').css('top', boxTop);
+            }
+            //parseInt=>從頭開始，從字串取出數值，遇到無法轉成數值的字串後結束
+        }
+        function moveUp(){
+            if (boxTop > 0) {
+                boxTop -= 100;
+                $('.box').css('top', boxTop);
             }
         }
 
 
 
 
-        $('.btnUp').click(function () {
-            $('.box').css('top', '-=100');
-        })
+        $('.btnUp').click(moveUp)
         $('.btnLeft').click(moveLeft);
         $('.btnRight').click(moveRight);
-        $('.btnDown').click(function () {
-            $('.box').css('top', '+=100');
-        })
+        $('.btnDown').click(moveDown);
 
         $(document).on('keydown', function (e) {
             e.preventDefault
@@ -95,6 +113,12 @@
             }
             if (e.keyCode === 37) {
                 moveLeft();
+            }
+            if (e.keyCode === 40) {
+                moveDown();
+            }
+            if (e.keyCode === 38) {
+                moveUp();
             }
         })
     </script>
