@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex9</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="wrap mx-auto">
+                <div class="box"></div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <button class="btnUp btn btn-info">
+                    <i class="fa-solid fa-caret-up"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btnLeft btn btn-info mx-3">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <button class="btnRight btn btn-info mx-3">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btnDown btn btn-info">
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        function moveRight() {
+            // console.log($('.box').css('left'));//確認往右的最大值，避免爆版
+            const maxLeft = $('.wrap').width() - $('.box').width();
+            console.log(maxLeft);
+            if (parseInt($('.box').css('left')) < maxLeft) {
+                $('.box').css('left', '+=100');
+            }
+            //parseInt=>從頭開始，從字串取出數值，遇到無法轉成數值的字串後結束
+        }
+        function moveLeft(){
+            if (parseInt($('.box').css('left')) > 0) {
+                $('.box').css('left', '-=100');
+            }
+        }
+
+
+
+
+        $('.btnUp').click(function () {
+            $('.box').css('top', '-=100');
+        })
+        $('.btnLeft').click(moveLeft);
+        $('.btnRight').click(moveRight);
+        $('.btnDown').click(function () {
+            $('.box').css('top', '+=100');
+        })
+
+        $(document).on('keydown', function (e) {
+            e.preventDefault
+            console.log('keydown:', e.keyCode);
+            if (e.keyCode === 39) {
+                moveRight();
+            }
+            if (e.keyCode === 37) {
+                moveLeft();
+            }
+        })
+    </script>
+</body>
+
+</html>
