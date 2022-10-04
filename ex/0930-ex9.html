@@ -65,9 +65,12 @@
     <script>
         let boxLeft = parseInt($('.box').css('left'));
         let boxTop = parseInt($('.box').css('top'));
+        const maxLeft = $('.wrap').width() - $('.box').width();
+        const maxTop = $('.wrap').height() - $('.box').height();
+
+
         function moveRight() {
             // console.log($('.box').css('left'));//確認往右的最大值，避免爆版
-            const maxLeft = $('.wrap').width() - $('.box').width();
             //避免按太快而導致位置參數出錯
             // console.log(maxLeft);
             if (boxLeft < maxLeft) {
@@ -76,38 +79,97 @@
             }
             //parseInt=>從頭開始，從字串取出數值，遇到無法轉成數值的字串後結束
         }
-        function moveLeft(){
+
+        function moveLeft() {
             if (boxLeft > 0) {
                 boxLeft -= 100;
                 $('.box').css('left', boxLeft);
             }
+
         }
-        function moveDown(){
-            const maxTop =  $('.wrap').height() - $('.box').height();
+        function moveDown() {
+
             if (boxTop < maxTop) {
                 boxTop += 100;
                 $('.box').css('top', boxTop);
             }
             //parseInt=>從頭開始，從字串取出數值，遇到無法轉成數值的字串後結束
+
         }
-        function moveUp(){
+        function moveUp() {
             if (boxTop > 0) {
                 boxTop -= 100;
                 $('.box').css('top', boxTop);
             }
         }
 
+        function startInterval(dir) {
+            myInterval = setInterval(() => {
+                if (dir === 'right') {
+                    if (boxLeft <= maxLeft) {
+                        moveRight();
+                    }
+                }
+                if (dir === 'left') {
+                    if (boxLeft > 0) {
+                        moveLeft();
+                    }
+                }
+            }, 100);
+        }
+
+        // function startIntervalRight() {
+        //     myInterval = setInterval(() => {
+        //         if (boxLeft <= maxLeft) {
+        //             moveRight();
+        //         }
+        //     }, 100);
+        // }
+        // function startIntervalLeft() {
+        //     myInterval = setInterval(() => {
+        //         if (boxLeft > 0) {
+        //             moveLeft();
+        //         }
+        //     }, 100);
+        // }
+        // function startIntervalDown() {
+        //     myInterval = setInterval(() => {
+        //         moveDown();
+        //     }, 100);
+        // }
+        // function startIntervalUp() {
+        //     myInterval = setInterval(() => {
+        //         moveUp();
+        //     }, 100);
+        // }
 
 
 
-        $('.btnUp').click(moveUp)
-        $('.btnLeft').click(moveLeft);
-        $('.btnRight').click(moveRight);
-        $('.btnDown').click(moveDown);
+
+
+
+
+
+        $('.btn').mouseup(function () {
+            clearInterval(myInterval);
+        });
+        $('.btnRight').mousedown(() => startInterval('right'));
+        $('.btnLeft').mousedown(() => startInterval('left'));
+        // $('.btnLeft').mouseup(function(){
+        //     clearInterval(myInterval);
+        // });
+        $('.btnUp').mousedown(startIntervalUp);
+        // $('.btnUp').mouseup(function(){
+        //     clearInterval(myInterval);
+        // });
+        $('.btnDown').mousedown(startIntervalDown);
+        // $('.btnDown').mouseup(function(){
+        //     clearInterval(myInterval);
+        // });
 
         $(document).on('keydown', function (e) {
             e.preventDefault
-            console.log('keydown:', e.keyCode);
+            console.log('keydown:', e);
             if (e.keyCode === 39) {
                 moveRight();
             }

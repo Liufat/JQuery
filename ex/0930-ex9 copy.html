@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex9-2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .box {
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+            position: absolute;
+            transition: .5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="wrap mx-auto">
+                <div class="box"></div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <button class="btnUp btn btn-info">
+                    <i class="fa-solid fa-caret-up"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btnLeft btn btn-info mx-3">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+                <button class="btnRight btn btn-info mx-3">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btnDown btn btn-info">
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+
+        const speed = 100;
+        let myInterval = null;
+        const minLeft = 0;
+
+        function startInterval(cssname, direction, boxEdge, edge, compare) {
+            myInterval = setInterval(() => {
+                eval(`boxEdge ${direction} ${speed}`) //eval=>讓字串變成能執行的指令
+                if (eval(`boxEdge ${compare} edge`)) {
+                    $('.box').css(cssname, boxEdge);
+                }
+            }, 100)
+        }
+
+        function stopInterval() {
+            clearInterval(myInterval);
+        };
+
+        $('.btnRight').mousedown(() => {
+            const boxLeft = parseInt($('.box').css('left'));
+            const maxLeft = $('.wrap').width() - $('.box').width();
+            startInterval('left', '+=', boxLeft, maxLeft, '<=')
+        })
+
+        $('.btn').mouseup(stopInterval);
+    </script>
+</body>
+
+</html>

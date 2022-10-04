@@ -17,7 +17,7 @@
             border-radius: 50%;
             overflow: hidden;
             margin: 10px;
-
+            border: 3px transparent solid;
         }
 
         .img-wrap>img {
@@ -57,7 +57,7 @@
         //3.移除其他人的border css
         $('img').on('click', function () {
             $(this).parent().css('border', '3px red solid');
-            $(this).parent().siblings().css('border', '')
+            $(this).parent().siblings().css('border','3px transparent solid' );
         })
     </script>
 </body>

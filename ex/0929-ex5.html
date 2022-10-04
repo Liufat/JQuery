@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ex5</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <style>
-            /* tr{
+    <style>
+        /* tr{
                 background-color: lightblue;
             } */
-        </style>
+    </style>
 </head>
 
 <body>
@@ -77,14 +77,23 @@
         //     console.log($(this).parent().nextAll().text());
         // })
         //2.能否把選到的背景變成light blue
-        $('input:checkbox').click(function(){
+        $('input:checkbox').click(function () {
             const check = $(this).prop('checked');
+            // if (check) {
+            //     $(this).closest('tr').css('background', 'lightblue')
+            // } else {
+            //     $(this).closest('tr').css('background', 'none')
+            // }
+            //用選擇器做：
+            // $('input:checked').closest('tr').css('background','lightblue');
+            // $('input:not(:checked)').closest('tr').css('background','none');
+            //用一個if做：
+            let bgColor = 'none'
             if(check){
-                $(this).parent().parent().children().css('background-color','lightblue')
-            } else {
-                $(this).parent().parent().children().css('background-color','')
+                bgColor = 'lightblue';
             }
-        })
+            $(this).closest('tr').css('background', bgColor);
+        });
     </script>
 </body>
 

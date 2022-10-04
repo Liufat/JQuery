@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #aaf;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script src="./../JS/jquery-3.6.1.min.js"></script>
+    <script>
+        console.log($('.box').css('width'));
+        console.log($('.box').css('background-color'));
+
+        $('.box').click(function () {
+            if ($('.box').css('background-color') === 'rgb(170, 170, 255)') {
+                $(this).css('background', 'lightpink');
+            } else {
+                $(this).css('background', '#aaf');
+            }
+        })
+
+        // var style = {
+        //     color:"#fff",
+        //     background:"#000",
+        // };
+        // $(this).css(style);
+
+        //累加的做法：
+        $(this).css('width','+=100');
+    </script>
+</body>
+
+</html>

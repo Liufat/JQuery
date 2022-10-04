@@ -8,6 +8,24 @@
     <title>ex3</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+        .passwordwrap {
+            position: relative;
+            height: 100%;
+        }
+
+        .showpw {
+            position: absolute;
+            right: 0;
+            margin: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,8 +34,7 @@
             <form>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="text" class="form-control" id="username" 
-                        placeholder="Enter user name" value="">
+                    <input type="text" class="form-control" id="username" placeholder="Enter user name" value="">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
@@ -28,7 +45,10 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <div class="passwordwrap">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <div class="showpw">顯示密碼</div>
+                    </div>
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="checkbox">
@@ -62,13 +82,21 @@
         //     console.log($('#checkbox').prop('checked'));
         // })
         //4.點下按鈕後，將設定的value填入指定區的value
-        $('#autoInput').on('click',function(e){
+        $('#autoInput').on('click', function (e) {
             e.preventDefault();
-           $('#username').attr('value', a_i_user_name);
-           $('#email').attr('value', a_i_email);
-           $('#password').attr('value', a_i_password);
-           $('#checkbox').attr('checked','checked');
+            $('#username').attr('value', a_i_user_name);
+            $('#email').attr('value', a_i_email);
+            $('#password').attr('value', a_i_password);
+            $('#checkbox').attr('checked', 'checked');
         });
+        //顯示密碼：
+        $('.showpw').click(function () {
+            if ($('#password').attr('type') === 'password') {
+                $('#password').attr('type', 'text');
+            } else {
+                $('#password').attr('type', 'password');
+            }
+        })
     </script>
 </body>
 

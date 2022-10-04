@@ -93,12 +93,18 @@
             // console.log(thisindex);
             // console.log($(this).parent().index())
             //2.是否能抓到點的div後面的所有div?
-            console.log($(this).parent().parent().nextAll().children().children().text())
+            // console.log($(this).parent().parent().nextAll().children().children().text())
             // console.log($(this).nextAll().text())
             //3.更改顏色
-            $(this).parent().nextAll().children().css('background', 'lightblue');
-            $(this).parent().parent().nextAll().children().children().css('background', 'lightblue');
+            // $(this).parent().nextAll().children().css('background', 'lightblue');
+            // $(this).css('background', 'lightblue').parent().parent().nextAll().children().children().css('background', 'lightblue');
             // $(`td:gt(${thisindex})`).children().css('background', 'lightblue');
+       
+            //用文字順序來抓index：
+            const index = $(this).text().replace('box','') - 1;//抓div裡面的文字
+            console.log(index);
+            $(`.box:gt(${index})`).css('background', 'lightblue');
+
         })
 
 
