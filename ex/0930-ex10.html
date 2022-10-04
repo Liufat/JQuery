@@ -51,17 +51,37 @@
             //     $('p').addClass('fontL');
             // }
 
+            // if($(this).is(':contains(S)')){
+            //     $('p').addClass('fontS');
+            // }
+            // if($(this).is(':contains(M)')){
+            //     $('p').addClass('fontM');
+            // }
+            // if($(this).is(':contains(L)')){
+            //     $('p').addClass('fontL');
+            // }
+            // console.log($(this).is(':contains(S)'));
+            let rmClassStr = '';
+            let addClassStr = '';
             if($(this).is(':contains(S)')){
-                $('p').addClass('fontS');
+                addClassStr = 'fontS';
+                rmClassStr = 'fontM fontL';
             }
             if($(this).is(':contains(M)')){
-                $('p').addClass('fontM');
+                addClassStr = 'fontM';
+                rmClassStr = 'fontS fontL';
             }
             if($(this).is(':contains(L)')){
-                $('p').addClass('fontL');
+                addClassStr = 'fontL';
+                rmClassStr = 'fontM fontS';
             }
-            console.log($(this).is(':contains(S)'));
+            reRender(this, rmClassStr, addClassStr);
         })
+
+        function reRender(btn, rmClassStr, addClassStr) {
+            $('p').removeClass(rmClassStr).addClass(addClassStr);
+            $(btn).addClass('active').siblings().removeClass('active');
+        }
 
         // $('.btnS').click(()=>{
         //     $('p').addClass('fontS');
