@@ -43,23 +43,23 @@
             $(this).addClass('active');
             $(this).siblings().removeClass('active');
             $('p').removeClass('fontS fontL fontM')
-            if ($(this).text() === 'S'){
-                $('p').addClass('fontS');
-            } else if ($(this).text() === 'M'){
-                $('p').addClass('fontM');
-            } else {
-                $('p').addClass('fontL');
-            }
-
-            // if($(this).is(':contains(S)')){
+            // if ($(this).text() === 'S'){
             //     $('p').addClass('fontS');
-            // }
-            // if($(this).is(':contains(M)')){
+            // } else if ($(this).text() === 'M'){
             //     $('p').addClass('fontM');
-            // }
-            // if($(this).is(':contains(L)')){
+            // } else {
             //     $('p').addClass('fontL');
             // }
+
+            if($(this).is(':contains(S)')){
+                $('p').addClass('fontS');
+            }
+            if($(this).is(':contains(M)')){
+                $('p').addClass('fontM');
+            }
+            if($(this).is(':contains(L)')){
+                $('p').addClass('fontL');
+            }
             console.log($(this).is(':contains(S)'));
         })
 
