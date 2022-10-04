@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex10</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<style>
+    .fontS{
+        font-size: .8rem;
+    }
+    .fontM{
+        font-size: 1rem;
+    }
+    .fontL{
+        font-size: 1.2rem;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">S</button>
+                <button type="button" class="btn btn-secondary">M</button>
+                <button type="button" class="btn btn-secondary">L</button>
+              </div>
+        </div>
+        <div class="row">
+            <h2>JQuery</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi expedita veniam omnis! Obcaecati quis sunt a earum tempore? Aperiam similique perspiciatis nam deserunt officiis obcaecati ratione fuga magnam voluptates sequi!</p>
+        </div>
+    </div>
+
+
+     <script src="./../JS/jquery-3.6.1.min.js"></script>
+     <script>
+        $('button').click(function(){
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+            $('p').removeClass('fontS fontL fontM')
+            if ($(this).text() === 'S'){
+                $('p').addClass('fontS');
+            } else if ($(this).text() === 'M'){
+                $('p').addClass('fontM');
+            } else {
+                $('p').addClass('fontL');
+            }
+
+            // if($(this).is(':contains(S)')){
+            //     $('p').addClass('fontS');
+            // }
+            // if($(this).is(':contains(M)')){
+            //     $('p').addClass('fontM');
+            // }
+            // if($(this).is(':contains(L)')){
+            //     $('p').addClass('fontL');
+            // }
+            console.log($(this).is(':contains(S)'));
+        })
+
+        // $('.btnS').click(()=>{
+        //     $('p').addClass('fontS');
+        //     $('p').removeClass('fontL fontM')
+        // })
+        // $('.btnM').click(()=>{
+        //     $('p').addClass('fontM');
+        //     $('p').removeClass('fontL fontS')
+        // })
+        // $('.btnL').click(()=>{
+        //     $('p').addClass('fontL');
+        //     $('p').removeClass('fontM fontS')
+        // })
+
+ 
+     </script>
+    
+</body>
+</html>
