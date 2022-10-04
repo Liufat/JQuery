@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        section {
+            height: 100vh;
+            font-size: 10rem;
+        }
+        .wrap{
+            display: flex;
+            transform: translate(100%);
+            transition: .5s;
+        }
+        .wrap.show{
+            transform: translate(0);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="autobg section1">section1</section>
+    <section class="autobg section2">
+        <div class="wrap">
+            <div class="img-wrap">
+                <img src="./../images/1.png" alt="">
+            </div>
+            <div class="img-wrap">
+                <img src="./../images/2.png" alt="">
+            </div>
+            <div class="img-wrap">
+                <img src="./../images/3.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="autobg section3">section3</section>
+    <section class="autobg section4">section4</section>
+    <section class="autobg section5">section5</section>
+    <section class="autobg section6">section6</section>
+    <section class="autobg section7">section7</section>
+    <section class="autobg section8">section8</section>
+    <section class="autobg section9">section9</section>
+    <section class="autobg section10">section10</section>
+    <section class="autobg section11">section11</section>
+    <section class="autobg section12">section12</section>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+        }
+
+        function getRBGA() {
+            return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+        }
+
+        const elements = document.querySelectorAll('.autobg');
+
+        Array.from(elements).forEach((element, index) => {
+            element.style.backgroundImage = getRBGA();
+        });
+
+    // $('.autobg').each(function (index, currentElement) {
+    //     currentElement.style.backgroundImage = getRBGA();
+    // });
+    </script>
+
+     <script src="./../JS/jquery-3.6.1.min.js"></script>
+     <script>
+        console.log('section2 offset:' , $('.section2').offset().top);
+
+        $(window).scroll(function(){
+            const nowScroll = $(window).scrollTop();
+            const windowVh = $(window).height();
+            const sec2Vh = $('.section2').offset().top
+            console.log(nowScroll);
+            if (nowScroll >= (sec2Vh - windowVh/2)){
+                $('.section2').css('background', 'orange');
+                $('.wrap').addClass('show')
+            } else {
+                $('.section2').css('background','pink');
+                $('.wrap').removeClass('show')
+            }
+            
+        })
+     </script>
+</body>
+
+</html>
