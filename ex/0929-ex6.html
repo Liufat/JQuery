@@ -22,6 +22,7 @@
             transform: translateX(0px);
             /*移動圖片 -800px -1600px......*/
             transition: .5s;
+            margin: 0;
         }
 
         .train li img {
@@ -53,28 +54,33 @@
 
         .prePage {
             position: absolute;
-            height: 30px;
+            height: 100%;
             width: 80px;
-            top: 50%;
-            bottom: 50%;
-            left: 10px;
-            background-color: rgba(255, 255, 255, 0.479);;
-            
+            top: 0;
+            bottom: 0;
+            left: 0;
+            background-color: transparent;
             display: flex;
             justify-content: center;
-
+            align-items: center;
+            transition: .2s;
         }
-
         .nextPage {
             position: absolute;
-            height: 30px;
+            height: 100%;
             width: 80px;
-            top: 50%;
-            bottom: 50%;
-            right: 10px;
-            background-color: rgba(255, 255, 255, 0.479);
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: transparent;
             display: flex;
             justify-content: center;
+            align-items: center;
+            transition: .2s;
+        }
+        .nextPage:hover,
+        .prePage:hover{
+            background-color: rgba(204, 204, 204, 0.575);
         }
     </style>
 </head>
@@ -95,8 +101,8 @@
             <li></li>
             <li></li>
         </ul>
-        <div class="prePage">上一頁</div>
-        <div class="nextPage">下一頁</div>
+        <div class="prePage">&#060</div>
+        <div class="nextPage">&#062</div>
     </div>
 
     <script src="./../JS/jquery-3.6.1.min.js"></script>
@@ -116,29 +122,22 @@
             $(this).css('background-color', 'white').siblings().css('background-color', 'transparent');
         })
         $('.nextPage').click(function () {
-            if (page !== 4) {
-                $('.train').css('transform', 'translateX(' + `${(page + 1) * -800}` + 'px)');
-                page++;
-                $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
-            } else {
-                page = 0;
-                $('.train').css('transform', 'translateX(' + `${(page) * -800}` + 'px)');
-                $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
-            }
+            page++;
+            if(page >= 5) page = 0
+            console.log(page);
+            pageMovement(page);
         })
         $('.prePage').click(function () {
-            if (page !== 0) {
-                $('.train').css('transform', 'translateX(' + `${(page - 1) * -800}` + 'px)');
-                page--;
-                $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
-            } else {
-                page = 4;
-                $('.train').css('transform', 'translateX(' + `${(page) * -800}` + 'px)');
-                $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
-            }
+            page--;
+            if(page <= -1)page = 4
+            pageMovement(page)
         })
 
-
+        function pageMovement(page){
+            const moveX = page * -800;
+            $('.train').css('transform',`translate(${moveX}px)`);
+            $('.slider-dots li').eq(page).css('background-color', 'white').siblings().css('background-color', 'transparent');
+        }
 
 
     </script>
