@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex13</title>
+    <style>
+        body{
+            margin: 0;
+            height: 800vh;
+        }
+        nav{
+            height: 50px;
+            background-color: tomato;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            transition: .2s;
+        }
+        nav.dis{
+            transform: translateY(-110%);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">I'm nav</nav>
+
+     <script src="./../JS/jquery-3.6.1.min.js"></script>
+     <script>
+        let preScroll = 0;
+        $(window).scroll(function(){
+            const nowScroll = $(window).scrollTop();
+            if (preScroll < nowScroll){
+                $('.nav').addClass('dis');
+            }
+            if (preScroll > nowScroll){
+                $('.nav').removeClass('dis');
+            }
+            preScroll = nowScroll;
+        })
+     </script>
+</body>
+</html>

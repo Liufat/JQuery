@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+    <style>
+        .wrap{
+            width: 800px;
+            height: 800px;
+            background-color: #ccc;
+            /* padding: 50px; */
+            position: relative;
+            /* 如果沒下position，.box1預設的參考值會是body */
+            padding-top: 1px;
+        }
+        .box1{
+            width: 400px;
+            height: 400px;
+            background-color: teal;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box1"></div>
+    </div>
+
+
+     <script src="./../JS/jquery-3.6.1.min.js"></script>
+     <script>
+        console.log($('.box1').position())
+     </script>
+</body>
+</html>
